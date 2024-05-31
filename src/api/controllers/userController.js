@@ -17,7 +17,21 @@ function getUser (req, res) {
             return res.status(201).json(user);
         }
     });
-    res.status(404).json({message: "User not found"});
+    res.status(404).json({message: "user not found"});
 }
 
-module.exports = { getAllUsers, getUser };
+function addUser (req, res) {
+    const { name, email } = req.body;
+    if(!name || !email) {
+        return res.status(400).json({ message: "name or email empty "});
+    }
+    const user = {
+        id: users.length + 1,
+        name: name,
+        email: email
+    };
+    users.push(user);
+    res.status(201).json(user);
+}
+
+module.exports = { getAllUsers, getUser, addUser };
