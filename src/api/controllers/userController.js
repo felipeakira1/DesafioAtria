@@ -23,7 +23,7 @@ function getUser (req, res) {
 function addUser (req, res) {
     const { name, email } = req.body;
     if(!name || !email) {
-        return res.status(400).json({ message: "name or email empty "});
+        return res.status(400).json({ message: "name or email are empty "});
     }
     const user = {
         id: users.length + 1,
@@ -45,4 +45,24 @@ function deleteUser (req, res) {
     res.status(204).send();
 }
 
-module.exports = { getAllUsers, getUser, addUser, deleteUser};
+function updateUser (req, res) {
+    const id = req.params.id;
+    const userId = parseInt(id);
+    const { name, email } = req.body;
+    if(!name || !email) {
+        return res.status(400).json({message: "name or email are empty"});
+    }
+    const index = users.findIndex(user => user.id === userId);
+    if(index === -1) {
+        return res.status(404).json({message: "user not found"});
+    }
+    const updatedUser = {
+        id: userId,
+        name: name,
+        email: email
+    }
+    users[index] = updatedUser;
+    res.status(200).json(updatedUser);
+}
+
+module.exports = { getAllUsers, getUser, addUser, updateUser, deleteUser};
