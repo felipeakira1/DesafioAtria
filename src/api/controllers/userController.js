@@ -34,4 +34,15 @@ function addUser (req, res) {
     res.status(201).json(user);
 }
 
-module.exports = { getAllUsers, getUser, addUser };
+function deleteUser (req, res) {
+    const id = req.params.id;
+    const userId = parseInt(id);
+    const index = users.findIndex(user => user.id === userId);
+    if(index === -1) {
+        return res.status(404).json({message: "user not found"});
+    }
+    users.splice(index, 1);
+    res.status(204).send();
+}
+
+module.exports = { getAllUsers, getUser, addUser, deleteUser};
