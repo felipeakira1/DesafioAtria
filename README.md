@@ -38,11 +38,11 @@ npm start
 
 ### API Endpoints
 The following endpoints are availabe in this API:
-* GET /users: Return all users.
-* GET /users/:id: Return a single user by ID.
-* POST /users: Add a new user. Requires name and email in the request body.
-* PUT /users/:id: Update an existing user by ID. Requires name and email in the request body.
-* DELETE /users/:id: Delete an user by ID.
+* GET /users: Returns status 200 and a JSON with all registered users.
+* GET /users/:id: Returns status 200 and a JSON with the user specified by the id. If the user does not exist, returns status 404 and an error message.
+* POST /users: Adds a new user to the system. Returns status 201 and a JSON with the created user. If any field sent by the body is empty, returns status 400 and an error message.
+* PUT /users/:id: Updates the information of a specific user specified by the id. Returns status 200 and a JSON with the user and its updated information. If any field sent by the body is empty, returns status 400 and an error message.
+* DELETE /users/:id: Removes a user specified by the id. Returns status 204. If the user does not exist, returns status 404 and an error message.
 
 ### Testing the API with Postman
 I recommend using Postman to test the API.
