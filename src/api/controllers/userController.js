@@ -14,7 +14,7 @@ function getUser (req, res) {
     const id = req.params.id;
     users.forEach(user => {
         if(user.id == id) {
-            return res.status(201).json(user);
+            return res.status(200).json(user);
         }
     });
     res.status(404).json({message: "user not found"});
