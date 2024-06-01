@@ -9,7 +9,7 @@ This project implements a simple REST API that supports basic CRUD operations to
 ## Getting Started
 ### Prerequisites
 * Node.js installed on your system.
-* npm or yarn to manage packages.
+* npm to manage packages.
 
 ### Installation
 1. Clone the repository to your local machine.
@@ -17,10 +17,6 @@ This project implements a simple REST API that supports basic CRUD operations to
 3. Install the required packages:
 ```
 npm install
-```
-or if you use yarn:
-```
-yarn install
 ```
 
 ### Environment variables
